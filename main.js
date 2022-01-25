@@ -19,7 +19,38 @@ navbarMenu.addEventListener('click', (e) => {
   if (target == null) {
     return;
   }
-
-  const scrollTo = document.querySelector(target);
-  scrollTo.scrollIntoView({ behavior: 'smooth' });
+  scrollIntoView(target);
 });
+
+//move to contact section when click contactme btn
+const contactBtn = document.querySelector('.home__contact');
+contactBtn.addEventListener('click', (e) => {
+  scrollIntoView('#contact');
+});
+
+//transparent home when scroll down
+const home = document.querySelector('.home__container');
+const homeHeight = home.getBoundingClientRect().height;
+document.addEventListener('scroll', () => {
+  home.style.opacity = 1 - window.scrollY / homeHeight;
+});
+
+// show "arrow up" btn when scroll down
+const arrowup = document.querySelector('.arrow-up');
+document.addEventListener('scroll', () => {
+  if (window.scrollY > homeHeight) {
+    arrowup.classList.add('visible');
+  } else {
+    arrowup.classList.remove('visible');
+  }
+});
+
+arrowup.addEventListener('click', () => {
+  console.log('click');
+  scrollIntoView('#home');
+});
+
+function scrollIntoView(selector) {
+  const scrollTo = document.querySelector(selector);
+  scrollTo.scrollIntoView({ behavior: 'smooth' });
+}
