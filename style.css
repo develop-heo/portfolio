@@ -535,7 +535,7 @@ progress {
   #navbar {
     flex-direction: column;
     align-items: flex-start;
-    background-color: var(--color-pink);
+    background-color: var(--color-purple);
   }
 
   #navbar.navbar--dark {
